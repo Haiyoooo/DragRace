@@ -12,7 +12,7 @@ void colorAnimation(color colorStart, color colorEnd, float delay)
   //changes colour from Start to End after a certain delay
   fill(colorStart);
   
-  if(timer.currentTime > delay + timer.startTime || racing == true)
+  if(timer.currentTime > delay + timer.startTime || lights.isGreen())
   {
     fill(colorEnd);
   }

@@ -48,7 +48,6 @@ class Lights
   {
     if(timer.currentTime > delay * 4 + timer.startTime)
     {
-      racing = true;
       return true;
     }
     return false;

@@ -1,6 +1,5 @@
-// BUG - Lights don't reset
+//BUG - Lights don't reset
 //TODO: Game states. Change GAMEOVERS & WIN printlns
-//TODO: Clean up racing & is green
 
 ArrayList<Particles> particles = new ArrayList<Particles>();
 Lights lights;
@@ -11,7 +10,6 @@ StateManager stateManager;
 
 boolean gas;
 boolean braking;
-boolean racing = false;
 
 
 void setup()
@@ -36,11 +34,8 @@ void draw()
 
 void mousePressed()
 {
-
-  
-  //racing = false;
-  //car.reset();
-  //timer.reset();
+  car.reset();
+  timer.reset();
 }
 
 void keyPressed()

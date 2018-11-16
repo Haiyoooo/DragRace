@@ -22,7 +22,7 @@ class Timer
   
   void begin()
   {
-    if (startTime == 0 && racing == true)
+    if (startTime == 0 && lights.isGreen())
     {
       startTime = millis();
     }
