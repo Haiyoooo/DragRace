@@ -8,7 +8,7 @@ class FinishLine
   {
     w = 100;
     h = height *0.9;
-    position = new PVector(800, height/2);
+    position = new PVector(width * 0.9, height/2);
   }
   
   void update()

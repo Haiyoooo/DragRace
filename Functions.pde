@@ -9,10 +9,10 @@ void explosionAnimation(float x, float y)
 
 void colorAnimation(color colorStart, color colorEnd, float delay)
 {
-  //changes colour from Start to End after a certain delay
-  fill(colorStart);
-  
-  if(timer.currentTime > delay + timer.startTime || lights.isGreen())
+  // changes colour after a delay
+  // delay with respect to the time the program initialized (including resets)
+  fill(colorStart);  
+  if(millis() > delay + timer.initializeTime || lights.isGreen())
   {
     fill(colorEnd);
   }

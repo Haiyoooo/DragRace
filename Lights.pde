@@ -39,14 +39,14 @@ class Lights
     
     colorAnimation(0, yellow, delay * 3);
     ellipse(position.x, position.y + gap * 2, size, size);
-     //<>// //<>//
+     //<>//
     colorAnimation(0, green, delay * 4);
     ellipse(position.x, position.y + gap * 3, size, size);
   }
   
   boolean isGreen() //<>//
   {
-    if(timer.currentTime > delay * 4 + timer.startTime)
+    if(millis() > delay * 4 + timer.initializeTime)
     {
       return true;
     }

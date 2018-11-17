@@ -1,5 +1,7 @@
-//BUG - Lights don't reset
-//TODO: Game states. Change GAMEOVERS & WIN printlns
+//Drag Race
+//by Eunice Lim
+//Nov 16, 2018
+//TODO: Game states
 
 ArrayList<Particles> particles = new ArrayList<Particles>();
 Lights lights;
@@ -14,7 +16,7 @@ boolean braking;
 
 void setup()
 {
-  size(1000,500);
+  size(1500,500);
   colorMode(HSB, 100);
   
   lights = new Lights();
