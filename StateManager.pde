@@ -57,10 +57,12 @@ class StateManager
   
   void lose()
   {
+    
+    //render
     //lights.render(); TODO
     finishLine.render();
     car.render();
-    explosionAnimation(car.position.x, car.position.y);
+    explosionAnimation(car.position.x, car.position.y, random(-3,3), random(-5,5));
     timer.render();
     textSize(100);
     text("GAMEOVER", width/2, height/2);

@@ -1,9 +1,9 @@
-void explosionAnimation(float x, float y)
+void explosionAnimation(float x, float y, float velX, float velY)
 {
   // create particles at position x, y
   for(int i = 0; i < 5; i++)
   {
-    particles.add( new Particles(x, y) );
+    particles.add( new Particles(x, y, velX, velY) );
   }
   
   // render, update and remove particles

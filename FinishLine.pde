@@ -33,9 +33,9 @@ class FinishLine
   
   boolean contains(Car car)
   {
-    // front of car has entered the finish area
+    // REAR of car has entered the finish area
     // rear of car hasn't exited the finish area
-    if(car.position.x + car.w/2 > position.x - w/2 && 
+    if(car.position.x - car.w/2 > position.x - w/2 && 
        car.position.x - car.w/2 < position.x + w/2)
     {
       return true; //TODO: for win conditioin, it's collided + not  burning x) etc.

@@ -10,10 +10,10 @@ class Particles
   private color explosionColor1;
   private color explosionColor2;
   
-  Particles(float tempX, float tempY)
+  Particles(float tempX, float tempY, float velX, float velY)
   {
     position = new PVector(tempX, tempY);
-    velocity = new PVector(random(-1,1), random(-3,0));
+    velocity = new PVector(velX, velY);
     
     lifespan = 100;
     size = random(10, 20);

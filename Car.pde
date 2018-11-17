@@ -63,17 +63,26 @@ class Car
     fill(100);
     rectMode(CENTER);
     
-    // car changes colour when brake or gas is applied
-    if(gas)
+    //
+    if(stateManager.gamestate == LOSE)
     {
-      fill(50, 100, 100);
-    }
-    else if(braking)
-    {
-      fill(90, 100, 100);
-    }
-    
-    rect(position.x, position.y, w, h);
+      for(int i = 0; i < random (5, 10); i++)
+      {
+        //cool stuff
+        rect(position.x + random(-w,w), position.y + random(-h,h), random(2,10), random(3,10));
+      }
+      } else {
+        // car changes colour when brake or gas is applied
+        if(gas)
+        {
+          fill(50, 100, 100);
+        }
+        else if(braking)
+        {
+          fill(90, 100, 100);
+        }
+        rect(position.x, position.y, w, h);
+      }
   }
   
   boolean hitRightWall()
@@ -82,7 +91,10 @@ class Car
     //if the car hits the right edge at a low speed, it will not explode
     if(position.x + w/2 > width && car.velocity.x >= 3)
     {
+      crashSound.rewind();
+      crashSound.play();
       return true;
+      
     } else if (position.x + w/2 > width && car.velocity.x < 3)
     {
       velocity.x = 0;
@@ -95,6 +107,8 @@ class Car
   {
     if(position.x > startPos && !lights.isGreen())
     {
+      crashSound.rewind();
+      crashSound.play();
       acceleration.set(0,0);
       return true;
     }
