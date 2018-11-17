@@ -33,6 +33,10 @@ class Car
     velocity.add(acceleration);
     position.add(velocity);
     acceleration.set(0,0);
+    fill(100);
+    textSize(20);
+    text("SPEED " + int(velocity.x), width/2, height*0.9);
+    println(velocity.x);
   }
   
   void gasPedal()
@@ -72,23 +76,28 @@ class Car
     rect(position.x, position.y, w, h);
   }
   
-  void checkHitWall()
+  boolean hitRightWall()
   {
-    if(position.x > width)
+    //if the car hits the right edge at a high speed, it will explode
+    //if the car hits the right edge at a low speed, it will not explode
+    if(position.x + w/2 > width && car.velocity.x >= 3)
     {
-      position.x = width - w - 3;
-      velocity.set(0,0);
-      println("GAMEOVER");
+      return true;
+    } else if (position.x + w/2 > width && car.velocity.x < 3)
+    {
+      velocity.x = 0;
+      return false;
     }
+    return false;
   }
   
-  void checkEarlyStart()
+  boolean foulStart()
   {
     if(position.x > startPos && !lights.isGreen())
     {
-      position.set(startPos, height/2);
-      explosionAnimation(position.x, position.y);
-      println("GAMEOVER");
+      acceleration.set(0,0);
+      return true;
     }
+    return false;
   }
 }

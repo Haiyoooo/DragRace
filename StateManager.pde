@@ -1,10 +1,5 @@
 class StateManager
 {
-  //-------------* FAKE ENUM *-----------------//
-  static final int PAUSED = 0;
-  static final int RUNNING = 1;
-  static final int LOSE = 2;
-  static final int WIN = 3;
   int gamestate;
   
   StateManager()
@@ -14,16 +9,24 @@ class StateManager
   
   void setState()
   {
-    if(finishLine.checkCollision(car) && car.velocity.x == 0)
+    if(gamestate == RUNNING)
     {
-     gamestate = WIN;
+      // player loses if they accelerate before lights turn green
+      // player loses if they crash into the screen's right edge
+      if(car.foulStart() || car.hitRightWall())
+      {
+        gamestate = LOSE;
+        println("LOSE");
+      }
+      
+      // player wins if the car stops within the finish zone
+      if(finishLine.contains(car) && car.velocity.x < 3)
+      {
+       gamestate = WIN;
+       println("WIN");
+      }
     }
-    
-    if(lights.isGreen())
-    {
-      gamestate = LOSE;
-      println("lose");
-    }
+
 
   }
   
@@ -32,35 +35,35 @@ class StateManager
     timer.update();
     lights.update();
     car.update();
-    car.checkHitWall();
-    car.checkEarlyStart();
+    car.hitRightWall();
+    car.foulStart();
     finishLine.update();
     
     timer.render();
     lights.render();
     finishLine.render();
     car.render();
-    
-    for(int i = particles.size() - 1; i >= 0; i--)
-    {
-      Particles p = particles.get(i);
-      p.update();
-      p.render();
-      
-      if(p.isDead())
-      {
-        particles.remove(i);
-      }
-    }
   }
   
   void win()
   {
-    
+    lights.render();
+    finishLine.render();
+    car.render();
+    timer.render();
+    textSize(100);
+    text("WIN!", width/2, height/2);
   }
   
   void lose()
   {
+    //lights.render(); TODO
+    finishLine.render();
+    car.render();
+    explosionAnimation(car.position.x, car.position.y);
+    timer.render();
+    textSize(100);
+    text("GAMEOVER", width/2, height/2);
   }
   
 }

@@ -8,12 +8,12 @@ class FinishLine
   {
     w = 100;
     h = height *0.9;
-    position = new PVector(width * 0.9, height/2);
+    position = new PVector(width - w/2, height/2);
   }
   
   void update()
   {
-    checkCollision(car);
+    contains(car);
   }
   
   void render()
@@ -23,15 +23,15 @@ class FinishLine
     
     //finish area
     //stopping anywhere within this area counts as a win
-    fill(50);
-    rect(position.x, position.y, w, h);
+    //fill(50);
+    //rect(position.x, position.y, w, h);
     
     //finish line
     fill(10, 80, 80, 50);
     rect(position.x - w/2 + 5, position.y, 10, h);
   }
   
-  boolean checkCollision(Car car)
+  boolean contains(Car car)
   {
     // front of car has entered the finish area
     // rear of car hasn't exited the finish area
@@ -42,4 +42,5 @@ class FinishLine
     }
     return false;
   }
+  
 }

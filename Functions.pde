@@ -5,6 +5,19 @@ void explosionAnimation(float x, float y)
   {
     particles.add( new Particles(x, y) );
   }
+  
+  // render, update and remove particles
+  for(int i = particles.size() - 1; i >= 0; i--)
+  {
+    Particles p = particles.get(i);
+    p.update();
+    p.render();
+    
+    if(p.isDead())
+    {
+      particles.remove(i);
+    }
+  }
 }
 
 void colorAnimation(color colorStart, color colorEnd, float delay)

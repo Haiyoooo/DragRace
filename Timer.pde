@@ -53,17 +53,17 @@ class Timer
     //if race has started, start the stopwatch
     if(startRaceTime == 0)
     {
-      text("READY? " + startRaceTime/1000, 100, 100);
+      text("READY?\n" + startRaceTime/1000, 100, 100);
     } else if (startRaceTime > 0)
     {
-      text("RACE! " + elapsedRaceTime/1000, 100, 100); //<>// //<>//
+      text("RACE!\n" + elapsedRaceTime/1000, 100, 100); //<>// //<>//
     }
     
-    textSize(20);
-    text("start Race Time " + startRaceTime/1000, 100, 150);
-    text("current Race Time " + elapsedRaceTime/1000, 100, 180);
-    text("millis() " + millis()/1000, 100, 210);
-    text("initialize Time" + initializeTime, 500, 150);
+    //textSize(20);
+    //text("start Race Time " + startRaceTime/1000, 100, 150);
+    //text("current Race Time " + elapsedRaceTime/1000, 100, 180);
+    //text("millis() " + millis()/1000, 100, 210);
+    //text("initialize Time" + initializeTime, 500, 150);
 
   }
 }
